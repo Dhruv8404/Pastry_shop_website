@@ -1,0 +1,298 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title> About</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+
+.avatar {
+  width: 200px;
+  height: auto;
+}
+
+@keyframes bounceInRight {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+    /* Custom CSS styles */
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+    }
+    
+    .navbar {
+      background-color: #ffede0;
+    }
+    
+    .navbar-brand {
+      color:rgb(63, 57, 145);
+    
+      font-size: x-large;
+    }
+    
+    .navbar-nav .nav-link {
+      color:rgb(63, 57, 145);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .product {
+      background-color: #FFF;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .product img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .product h4 {
+      color: #8B4513;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+  
+    
+    .product-info {
+      text-align: center;
+    }
+    
+    .product button {
+      background-color: #8B4513;
+      color: #FFF;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .product button:hover {
+      background-color: #A0522D;
+    }
+    .table {
+  width: 80%; /* Adjust the width of the table */
+  margin: 0 auto; /* Center the table horizontally */
+  border: none; /* Remove borders from the table */
+  background-color: #336699; /* Set the background color for the whole table */
+}
+
+/* Center the content in the table cells */
+th, td {
+  text-align: center;
+  padding: 10px;
+  color: #ffffff;
+}
+
+/* Apply background and text colors to table header cells */
+th {
+  background-color: #336699; /* Change to your desired background color */
+  color: #ffffff; /* Change to your desired text color */
+}
+
+/* Add a background color to the social media icons */
+.social-icon {
+  background-color: #f0f0f0; /* Change to your desired background color */
+  width: 30px; /* Adjust the width and height of the icons as needed */
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+/* Adjust the font size and color for the social media icons if needed */
+.social-icon img {
+  width: 20px; /* Adjust the size of the icons as needed */
+  height: 20px;
+  vertical-align: middle;
+}
+
+body{
+background-color: #ffede0;
+
+}
+
+.table1 {
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            border: 1px solid #336699;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav-link{
+      font-size: large;
+    }
+    .navbar {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  right: 0;
+ 
+  z-index: 999;
+}
+.nav-item a:hover{
+  background-color:#caa2f8;
+  border-radius: 8px; 
+ }
+</style>
+</head>
+
+<body>
+  <form action="/main/pastry/" method="POST">
+    <nav class="navbar navbar-expand-lg"><a class="navbar-brand" href="#"></a><a class="navbar-brand" href="#"></a>
+      <a class="navbar-brand" href="#">Pastry Shop</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"> <li class="nav-item">
+            <form action="/main/shop/" method="POST">
+              <a class="nav-link" href="/main/shop/">Shop</a>
+            </form>
+          </li>
+            <form action="/main/pastry/" method="POST">
+              <a class="nav-link" href="/main/pastry/">Home</a>
+            </form>
+          </li>
+      
+          <li class="nav-item">
+            <form action="/main/about/" method="POST">
+              <a class="nav-link" href="/main/about/">About</a>
+            </form>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <form action="/main/login/" method="POST">
+                    <a class="dropdown-item" href="/main/login/">Login</a>
+                </form>
+                <form action="/main/register/" method="POST">
+                    <a class="dropdown-item" href="/main/register/">Register</a>
+                </form>
+            </div>
+        </li>
+           
+        <li class="nav-item">
+          <form action="/main/addtocart/" method="POST">
+            <a class="nav-link" href="/main/addtocart/">Add to Cart</a>
+          </form>
+        </li>
+          <li class="nav-item">
+            <form action="" method="POST">
+              <a class="nav-link" href=""></a>
+            </form>
+           </li>
+           <li class="nav-item">
+             <form>
+                <a class="nav-link" href=''></a>
+              </form>
+            </li>
+            <li class="nav-item">
+             <form>
+                <a class="nav-link" href=''></a>
+              </form>
+            </li>
+        </ul>
+      </div>
+    </nav>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        
+<h2>Fresh all-natural ingredients.</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat sem purus, ultrices hendrerit nunc gravida sit amet. Aliquam et fringilla neque, vel tincidunt nibh. Vestibulum accumsan aliquam diam, vitae viverra nunc blandit in.  Donec facilisis vehicula ornare. Ut neque quam, porta sit amet ante et, porta mollis felis. Aliquam et fringilla neque, vel tincidunt nibh. Vestibulum accumsan aliquam diam, vitae viverra nunc blandit in. Donec facilisis vehicula ornare. </p>
+<h2>Another subheading goes here.</h2>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat sem purus, ultrices hendrerit nunc gravida sit amet. Aliquam et fringilla neque, vel tincidunt nibh. Donec facilisis vehicula ornare. Ut neque quam, porta sit amet ante et, porta mollis felis. Aliquam et fringilla neque, vel tincidunt nibh. Vestibulum accumsan aliquam diam, vitae viverra nunc blandit in. Donec facilisis vehicula ornare.  Vestibulum accumsan aliquam diam, vitae viverra nunc blandit in. </p>
+
+      </div>
+      <div class="col-md-6">
+        <img src="https://media.istockphoto.com/id/921788748/photo/portrait-of-confectioner-decorating-cake-in-restaurant-kitchen.jpg?s=612x612&w=0&k=20&c=SFVHFQz-gy2SOkS4rIlMObUtgk1bVPHZWPFKNBGtThg=" alt="Avatar" class="avatar animated bounceInRight">
+      </div>
+    </div>
+  </div>
+  <table class="table">
+      
+    <tr>
+      <th></th>
+      
+      <th>OUR STORE
+      </th>
+    <th>OPENING HOURS</th>
+    <th>STAY CONNECTED</th>
+    </tr>
+    <tr>
+      <th>________________________<br><h2>Pastry Shop</h2>_________________________</th>
+      <td>00,patelfaliyu varod<br>jhalod,Dis-Dahod<br>Gujarat</td>
+      <td>Closed Mondays<br>
+        Tue - Thurs: 9am - 5pm<br>
+        Fri - Sun: 9am - 8pm<br>
+        </td>
+        <td>
+          <img src="https://stpaulsbanswara.com/Images/SiteImage/facebook-circle.png" class="social-icon">
+          <img src="https://stpaulsbanswara.com/Images/SiteImage/instagram.png" class="social-icon">
+          <img src="https://stpaulsbanswara.com/Images/SiteImage/twitter.png" class="social-icon">
+        </td>
+        
+    </tr>
+    <tr>
+      <th></th>
+      <td>Ph_no-7976322569<br>Email id-<br>pateldhruv2723@gmail.com</td>
+      <th</th>
+    </tr>
+   
+  
+</table>
+<br>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</form>
+</body>
+</html>

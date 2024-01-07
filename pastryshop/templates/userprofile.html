@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <p>Name: {{ user.name }}</p>
+    <p>Contact: {{ user.contact }}</p>
+    <p>Address: {{ user.address }}</p>
+    <p>Landmark: {{ user.landmark }}</p>
+    <p>City: {{ user.city }}</p>
+    <p>Pincode: {{ user.pincode }}</p>
+    <p>Email: {{ user.email }}</p>
+    <!-- Do not print the password field for security reasons -->
+    <p>IP Address: {{ user.ip_address }}</p>
+</body>
+</html>

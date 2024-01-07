@@ -1,0 +1,379 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pastry Shop</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS styles */
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+    }
+    
+    .navbar-brand {
+      color:rgb(63, 57, 145);
+      
+      font-size: x-large;
+    }
+    
+    .navbar-nav .nav-link {
+      color:rgb(63, 57, 145);
+      font-size: large;
+    
+    }
+    .nav-item a:hover{
+  background-color:#caa2f8;
+  border-radius: 8px; 
+ }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .product {
+      background-color: #FFF;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .product img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .product h4 {
+      color: #000000;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+    .product p {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    
+    .product-info {
+      text-align: center;
+    }
+    
+    .product button {
+      background-color:  #caa2f8;
+      color: #FFF;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .product button:hover {
+      background-color:  #976ec5;
+    }
+    .image-container {
+  position: relative;
+  width: 100%;
+  top: 100px;
+  text-align: center;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: slideAnimation 4s infinite;
+}
+.social-icon {
+  margin-right: 10px;
+   /* Adjust the value as per your preference */
+}
+
+
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-100%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  60% {
+    transform: translateX(-300%);
+  }
+  80% {
+    transform: translateX(-400%);
+  }
+  100% {
+    transform: translateX(-400%);
+  }
+}
+
+
+
+/* Add this CSS to your existing styles or create a new CSS file and link it in your HTML */
+
+.image-container {
+  margin: 0;
+  padding-top: 100px; /* Adjust this value to provide space for the fixed navbar */
+  background-image: url("https://media.istockphoto.com/id/582310974/photo/delicious-and-sweet-seasonal-pastry-background.jpg?s=1024x1024&w=is&k=20&c=02zN-6TnVDN1V6BpL0FJMqwlVdBscF6pOLPJuIczenc=");
+  background-size: cover;
+  background-attachment: fixed;
+  margin-left:100px ;
+
+  width: 1400px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  right: 0;
+  background-color: #ffede0;
+  z-index: 999;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.table {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  margin-top: -20px;
+  border-radius: 10px;
+}
+
+
+
+
+/* Add this CSS to your existing styles or create a new CSS file and link it in your HTML */
+
+/* Apply general styles to the table */
+.table {
+  width: 80%; /* Adjust the width of the table */
+  margin: 0 auto; /* Center the table horizontally */
+  border: none; /* Remove borders from the table */
+  background-color: #336699; /* Set the background color for the whole table */
+}
+
+/* Center the content in the table cells */
+th, td {
+  text-align: center;
+  padding: 10px;
+  color: #ffffff;
+}
+
+/* Apply background and text colors to table header cells */
+th {
+  background-color: #336699; /* Change to your desired background color */
+  color: #ffffff; /* Change to your desired text color */
+}
+
+/* Add a background color to the social media icons */
+.social-icon {
+  background-color: #f0f0f0; /* Change to your desired background color */
+  width: 30px; /* Adjust the width and height of the icons as needed */
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+/* Adjust the font size and color for the social media icons if needed */
+.social-icon img {
+  width: 20px; /* Adjust the size of the icons as needed */
+  height: 20px;
+  vertical-align: middle;
+}
+.data{
+  margin-top: -140px;
+  background-color: #caa2f8;
+  color: #FFF;
+}
+h1{
+  font-family:  Arial, sans-serif;
+ color: whitesmoke;
+}
+.data2{
+color: black;
+}
+body{
+background-color: #ffede0;
+
+}
+
+.place-order-btn:hover{
+   background-color:  #976ec5;
+}
+.place-order-btn{
+  background-color:  #caa2f8;
+  color: #ffffff;
+  border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+}
+.table {
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            border: 1px solid #336699;
+            padding: 10px;
+            text-align: center;
+        }
+  </style>
+</head>
+
+<body>
+  <form action="/main/pastry/" method="POST">
+    <nav class="navbar navbar-expand-lg"><a class="navbar-brand" href="#"></a><a class="navbar-brand" href="#"></a>
+      <a class="navbar-brand" href="#">Pastry Shop</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"> <li class="nav-item">
+            <form action="/main/shop/" method="POST">
+              <a class="nav-link" href="/main/shop/">Shop</a>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form action="/main/pastry/" method="POST">
+              <a class="nav-link" href="/main/pastry/">Home</a>
+            </form>
+          </li>
+         
+          
+          <li class="nav-item">
+            <form action="/main/about/" method="POST">
+              <a class="nav-link" href="/main/about/">About</a>
+            </form>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <form action="/main/login/" method="POST">
+                    <a class="dropdown-item" href="/main/login/">Login</a>
+                </form>
+                <form action="/main/register/" method="POST">
+                    <a class="dropdown-item" href="/main/register/">Register</a>
+                </form>
+            </div>
+        </li>
+        <li class="nav-item">
+          <form action="/main/addtocart/" method="POST">
+            <a class="nav-link" href="/main/addtocart/">Add to Cart</a>
+          </form>
+        </li>
+          <li class="nav-item">
+            <form>
+               <a class="nav-link" href=''></a>
+             </form>
+           </li>
+           <li class="nav-item">
+             <form>
+                <a class="nav-link" href=''></a>
+              </form>
+            </li>
+            <li class="nav-item">
+             <form>
+                <a class="nav-link" href=''></a>
+              </form>
+            </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="image-container">
+      <div class="data"><h2>FREE SHIPPING ON ALL ORDERS OVER Rs-600</h2></div>
+      <br><br><br><br><br><br> <br><br><h1> ___________<br><br>Pastry Shop</h1><h1>___________</h1><br><br>
+      <form method="post" action="{% url 'shop' %}"><button class="place-order-btn"><h3>Order now</h3></button></form> <br><br>
+      <br><br><br><br><br><br>
+    </div>
+    <br><br><br>
+      <br><br><br><br>
+      <center><h1 class="data2">OUR BEST SELLERS</h1></center>
+      <br>
+
+      <div class="row justify-content-center">
+        {% for product in products %}
+        <div class="col-lg-2 col-md-1 col-sm-3">
+          <div class="product">
+            <img src="{{ product.image }}" alt="{{ product.description }}" class="img-fluid">
+            <div class="product-info">
+              <h4>{{ product.description }}</h4>
+              <p>Price: ${{ product.price }}</p>
+              <form action="{% url 'addtocart' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="image" value="{{ product.image }}">
+                <input type="hidden" name="description" value="{{ product.description }}">
+                <input type="hidden" name="price" value="{{ product.price }}">
+                <button type="submit">Add to Cart</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  
+    <table class="table">
+      
+        <tr>
+          <th></th>
+          
+          <th>OUR STORE
+          </th>
+        <th>OPENING HOURS</th>
+        <th>STAY CONNECTED</th>
+        </tr>
+        <tr>
+          <th>________________________<br><h2>Pastry Shop</h2>_________________________</th>
+          <td>00,patelfaliyu varod<br>jhalod,Dis-Dahod<br>Gujarat</td>
+          <td>Closed Mondays<br>
+            Tue - Thurs: 9am - 5pm<br>
+            Fri - Sun: 9am - 8pm<br>
+            </td>
+            <td>
+              <img src="https://stpaulsbanswara.com/Images/SiteImage/facebook-circle.png" class="social-icon">
+              <img src="https://stpaulsbanswara.com/Images/SiteImage/instagram.png" class="social-icon">
+              <img src="https://stpaulsbanswara.com/Images/SiteImage/twitter.png" class="social-icon">
+            </td>
+            
+        </tr>
+        <tr>
+          <th></th>
+          <td>Ph_no-7976322569<br>Email id-<br>pateldhruv2723@gmail.com</td>
+        <th></th>
+        </tr>
+       
+      
+    </table>
+<br>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </form>
+</body>
+
+</html>
+
+             

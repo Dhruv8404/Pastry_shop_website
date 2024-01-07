@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Shop</title>
+  <style>
+    /* Additional CSS styles can be added here */
+     /* Custom CSS styles */
+     .carousel-item img {
+      width: 100%;
+      height: auto;
+    }
+    
+    .navbar {
+      background-color: #ffede0;
+    }
+    
+    .navbar-brand {
+     color:rgb(63, 57, 145);
+     font-size: x-large;
+    }
+    
+    .navbar-nav .nav-link {
+      color:rgb(63, 57, 145);
+      font-size: large;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .product {
+      background-color: #FFF;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .product img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .product h4 {
+      color:rgb(0, 0, 0);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+  body{
+    background-color: #ffede0;
+  }
+    
+    .product-info {
+      text-align: center;
+    }
+    .navbar {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  right: 0;
+ 
+  z-index: 999;
+}
+    .product button {
+      background-color:  #caa2f8;
+      color: #FFF;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .product button:hover {
+      background-color:  #976ec5;
+    }
+    .table {
+  width: 80%; /* Adjust the width of the table */
+  margin: 0 auto; /* Center the table horizontally */
+  border: none; /* Remove borders from the table */
+  background-color: #336699; /* Set the background color for the whole table */
+}
+
+/* Center the content in the table cells */
+th, td {
+  text-align: center;
+  padding: 10px;
+  color: #ffffff;
+}
+
+/* Apply background and text colors to table header cells */
+th {
+  background-color: #336699; /* Change to your desired background color */
+  color: #ffffff; /* Change to your desired text color */
+}
+
+/* Add a background color to the social media icons */
+.social-icon {
+  background-color: #f0f0f0; /* Change to your desired background color */
+  width: 30px; /* Adjust the width and height of the icons as needed */
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+/* Adjust the font size and color for the social media icons if needed */
+.social-icon img {
+  width: 20px; /* Adjust the size of the icons as needed */
+  height: 20px;
+  vertical-align: middle;
+}
+.table {
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            border: 1px solid #336699;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav-item a:hover{
+  background-color:#caa2f8;
+  border-radius: 8px; 
+ }
+  </style>
+
+  
+</head>
+
+<body>
+  <form action='/main/shop/' method='POST'>
+    <nav class="navbar navbar-expand-lg"><a class="navbar-brand" href="#"></a><a class="navbar-brand" href="#"></a>
+      <a class="navbar-brand" href="#">Pastry Shop</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item active">
+            <form action='/main/shop/' method='POST'>
+              <a class="nav-link" href="/main/shop/">Shop</a>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form action='/main/pastry/' method='POST'>
+              <a class="nav-link" href="/main/pastry/">Home</a>
+            </form>
+          </li>
+          
+       
+          <li class="nav-item">
+            <form action='/main/about/' method='POST'>
+              <a class="nav-link" href="/main/about/">About</a>
+            </form>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <form action="/main/login/" method="POST">
+                    <a class="dropdown-item" href="/main/login/">Login</a>
+                </form>
+                <form action="/main/register/" method="POST">
+                    <a class="dropdown-item" href="/main/register/">Register</a>
+                </form>
+            </div>
+        </li>
+        <li class="nav-item">
+          <form action="/main/addtocart/" method="POST">
+            <a class="nav-link" href="/main/addtocart/">Add to Cart</a>
+          </form>
+        </li>
+          <li class="nav-item">
+           
+              <a class="nav-link"></a>
+            </form>
+            
+          </li>
+          <li class="nav-item">
+            
+            <a class="nav-link" href=""></a>
+          
+        </li>  <li class="nav-item">
+            
+          <a class="nav-link" href=""></a>
+        
+      </li>
+        </ul>
+      </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <!-- shop.html -->
+    <div class="container">
+      <div class="row">
+        {% for product in products %}
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="product">
+        <center> <img src="{{ product.image }}" alt="{{ product.description }}" class="img-fluid"></center>
+            <div class="product-info">
+              <h4>{{ product.description }}</h4>
+              <p>Price: ${{ product.price }}</p>
+              <form action="{% url 'addtocart' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="image" value="{{ product.image }}">
+                <input type="hidden" name="description" value="{{ product.description }}">
+                <input type="hidden" name="price" value="{{ product.price }}">
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+  <table class="table">
+      
+    <tr>
+      <th></th>
+      
+      <th>OUR STORE
+      </th>
+    <th>OPENING HOURS</th>
+    <th>STAY CONNECTED</th>
+    </tr>
+    <tr>
+      <th>________________________<br><h2>Pastry Shop</h2>_________________________</th>
+      <td>00,patelfaliyu varod<br>jhalod,Dis-Dahod<br>Gujarat</td>
+      <td>Closed Mondays<br>
+        Tue - Thurs: 9am - 5pm<br>
+        Fri - Sun: 9am - 8pm<br>
+        </td>
+        <td>
+          <img src="https://stpaulsbanswara.com/Images/SiteImage/facebook-circle.png" class="social-icon">
+          <img src="https://stpaulsbanswara.com/Images/SiteImage/instagram.png" class="social-icon">
+          <img src="https://stpaulsbanswara.com/Images/SiteImage/twitter.png" class="social-icon">
+        </td>
+        
+    </tr>
+    <tr>
+      <th></th>
+      <td>Ph_no-7976322569<br>Email id-<br>pateldhruv2723@gmail.com</td>
+      <th></th>
+    </tr>
+   
+  
+</table>
+<br>
+</body>
+
+</html>

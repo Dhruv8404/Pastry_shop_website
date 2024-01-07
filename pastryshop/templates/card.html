@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .card {
+      width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .card label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .card input[type="text"],
+    .card input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .card button {
+      background-color: #2196F3;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #0b7dda;
+    }
+  </style>
+</head>
+<body>
+{{ message }}
+  <div class="card">
+    <h2>Credit Card Information</h2>
+    <!-- card.html -->
+
+<!-- card.html -->
+
+<form method="post" action="{% url 'payment' %}">
+  {% csrf_token %}
+  <input type="text" name="card_number" placeholder="Card Number">
+  <input type="text" name="card_holder_name" placeholder="Card Holder Name">
+  <input type="text" name="expiration_date" placeholder="Expiration Date">
+  <input type="text" name="cvv" placeholder="CVV">
+  <input type="text" name="email" placeholder="email">  <!-- Include the user's email as a hidden field -->
+  <input type="submit" value="Submit">
+</form>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  // Handle form submission
+  $(document).ready(function() {
+    $('#creditCardForm').on('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Get form values
+      var cardNumber = $('#cardNumber').val();
+      var expiryDate = $('#expiryDate').val();
+      var cvv = $('#cvv').val();
+
+      // Send data to server-side script using AJAX
+      $.ajax({
+        type: 'POST',
+        url: '/insert_creditcard.php',
+        data: {
+          cardNumber: cardNumber,
+          expiryDate: expiryDate,
+          cvv: cvv
+        },
+        success: function(response) {
+          // Handle success response from the server, if needed
+          console.log('Data inserted successfully!');
+        },
+        error: function(error) {
+          // Handle error response from the server, if needed
+          console.error('Error occurred while inserting data: ', error);
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

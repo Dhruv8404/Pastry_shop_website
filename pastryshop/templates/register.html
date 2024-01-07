@@ -1,0 +1,165 @@
+{% load static %}
+<html>
+    <head>
+
+        
+        <title>register form</title>
+        <style>
+          body {
+              font-family: Arial, sans-serif;
+              background-color: #f0f0f0;
+              margin: 20px;
+          }
+  
+          h1 {
+              text-align: center;
+              margin-bottom: 20px;
+          }
+  
+          form {
+              max-width: 400px;
+              margin: 0 auto;
+              padding: 20px;
+              background-color: #fff;
+              border-radius: 5px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          }
+  
+          input[type="text"],
+          input[type="email"],
+          input[type="password"],
+          textarea {
+              width: 100%;
+              padding: 10px;
+              margin-bottom: 10px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+          }
+  
+          input[type="text"]:focus,
+          input[type="email"]:focus,
+          input[type="password"]:focus,
+          textarea:focus {
+              outline: none;
+              border-color: #007bff;
+          }
+          .click {
+            background-color: #caa2f8;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+       
+
+        .click {
+            background-color: #caa2f8;
+            color: #fff;
+        }
+
+        .click:hover {
+            background-color: #976ec5;
+        }
+
+        .nav-item a:hover {
+            background-color: #caa2f8;
+            border-radius: 8px;
+        }
+      
+    /* Existing CSS styles... */
+    .input-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .input-container input {
+        flex: 1;
+        margin-right: 5px;
+    }
+
+    .input-container input:last-child {
+        margin-right: 0;
+    }
+</style>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    <h1>Registration - Form</h1>
+    <form action='/main/register/' method='POST'>
+        <div class="input-container">
+            <input type="text" name="name" placeholder="Name" autocomplete="off">
+            <input type="text" name="contact" placeholder="Contact" maxlength="10" autocomplete="on">
+        </div><br>
+        <textarea name="address" placeholder="Address" autocomplete="off" required></textarea><br><br>
+        <div class="input-container">
+        <input type="text" id="landmark" name="landmark" placeholder="Landmark" autocomplete="off">
+        <input type="text" id="city" name="city" required placeholder="City" autocomplete="off">
+        </div>
+        <input type="text" id="contact" name="pincode" required placeholder="Pincode" maxlength="6" autocomplete="on"><br><br> 
+        <input type="text" name="email" placeholder="Email" autocomplete="on" required><br><br>
+        <input type="password" name="password" placeholder="Password" autocomplete="on"><br><br>
+        <button class="click" type="submit">Submit</button>
+    </form>
+        <script>
+            document.getElementById('registrationForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                const userData = {
+                    'email': formData.get('email'),
+                    'name': formData.get('name'),
+                    'contact': formData.get('contact'),
+                    'address': formData.get('address'),
+                    'landmark': formData.get('landmark'),
+                    'city': formData.get('city'),
+                    'pincode': formData.get('pincode'),
+                };
+                localStorage.setItem('userSessionData', JSON.stringify(userData));
+                this.submit();
+
+            });
+            // Retrieve session data from localStorage and populate the form fields
+const emailInput = document.getElementById('email');
+const nameInput = document.getElementById('name');
+const contactInput = document.getElementById('contact');
+const addressInput = document.getElementById('address');
+const landmarkInput = document.getElementById('landmark');
+const cityInput = document.getElementById('city');
+const pincodeInput = document.getElementById('pincode');
+
+const sessionData = JSON.parse(localStorage.getItem('userSessionData'));
+if (sessionData) {
+  emailInput.value = sessionData.email;
+  nameInput.value = sessionData.name;
+  contactInput.value = sessionData.contact;
+  addressInput.value = sessionData.address;
+  landmarkInput.value = sessionData.landmark;
+  cityInput.value = sessionData.city;
+  pincodeInput.value = sessionData.pincode;
+}
+
+// Store session data in localStorage on form submission
+document.querySelector('form').addEventListener('submit', function(event) {
+  const userData = {
+    email: emailInput.value,
+    name: nameInput.value,
+    contact: contactInput.value,
+    address: addressInput.value,
+    landmark: landmarkInput.value,
+    city: cityInput.value,
+    pincode: pincodeInput.value,
+  };
+  localStorage.setItem('userSessionData', JSON.stringify(userData));
+});
+        </script>
+
+</script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </body>
+</html>

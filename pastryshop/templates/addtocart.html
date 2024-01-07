@@ -1,0 +1,596 @@
+{% load static %}
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Shopping Cart</title>
+  <style>
+    /* Custom CSS styles */
+    .navbar {
+      background-color: #ffede0;
+    }
+
+    .navbar-brand {
+      color:rgb(63, 57, 145);
+      
+      font-size:x-large;
+    }
+    
+    .navbar-nav .nav-link {
+      color:rgb(63, 57, 145);
+      font-size: large;
+    
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .product {
+      background-color: #FFF;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .product img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .product h2 {
+      color: #8B4513;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .place-order-btn1{
+      background-color:#e1640b; 
+      color: #FFF;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      box-shadow: #e1640b; 
+    }
+    .place-order-btn1:hover{
+      background-color:#8B4513;
+
+    }
+    .product p {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+    }
+
+    .quantity-btn {
+      background-color:  #caa2f8;
+      color: #FFF;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .quantity-btn:hover {
+      background-color:  #976ec5;
+    }
+
+    .quantity-input {
+      margin: 0 10px;
+      width: 50px;
+      text-align: center;
+    }
+
+    .total-price {
+      font-weight: bold;
+    }
+
+    .place-order-btn {
+      background-color:  #caa2f8;
+      color: #FFF;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .place-order-btn:hover {
+      background-color:  #976ec5;
+    }
+    .cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-header,
+.summary-header {
+  text-align: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.product-column {
+  width: 80%;
+  vertical-align: top;
+  
+}
+
+.cart-summary-column {
+  vertical-align: top;
+}
+
+/* Additional styling for better visualization */
+.container {
+  margin: 20px;
+}
+.navbar {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  right: 0;
+ 
+  z-index: 999;
+}
+.product {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.image-container {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.description {
+  flex-grow: 1;
+}
+
+.place-order-btn {
+  margin-top: 10px;
+}
+
+.cart-summary {
+  background-color: #ffede0;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.cart-summary h3 {
+  margin: 0;
+  padding-bottom: 10px;
+}
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.summary-header {
+  text-align: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.cart-summary-column {
+  vertical-align: top;
+  background-color: #f8f8f8;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.cart-summary {
+  text-align: center;
+}
+
+.cart-summary h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.cart-total-sum,
+.delivery-charges,
+.final-total-price {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Additional styling for better visualization */
+.container {
+  margin: 20px;
+  display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffede0;
+      padding: 20px;
+      border-radius: 10px;
+      
+}
+.table2 {
+  width: 80%; /* Adjust the width of the table */
+  margin: 0 auto; /* Center the table horizontally */
+  border: none; /* Remove borders from the table */
+  background-color: #336699; /* Set the background color for the whole table */
+}
+
+/* Center the content in the table cells */
+th, td {
+  text-align: center;
+  padding: 10px;
+  color: #ffffff;
+}
+
+/* Apply background and text colors to table header cells */
+th {
+  background-color: #336699; /* Change to your desired background color */
+  color: #ffffff; /* Change to your desired text color */
+}
+
+/* Add a background color to the social media icons */
+.social-icon {
+  background-color: #f0f0f0; /* Change to your desired background color */
+  width: 30px; /* Adjust the width and height of the icons as needed */
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+/* Adjust the font size and color for the social media icons if needed */
+.social-icon img {
+  width: 20px; /* Adjust the size of the icons as needed */
+  height: 20px;
+  vertical-align: middle;
+}
+h1{
+  margin-top: 100px;
+}
+
+
+.table2 {
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            border: 1px solid #336699;
+            padding: 10px;
+            text-align: center;
+        }
+.cart-table{
+
+background-color: #ffede0;
+
+
+}
+body{
+background-color: #ffede0;
+
+}
+.cart-summary-column{
+  background-color: #ffede0;
+}
+p{
+  color: #000;
+}
+.nav-item a:hover{
+  background-color:#caa2f8;
+  border-radius: 8px; 
+ }
+  </style>
+</head>
+<body>
+  <form action="/main/pastry/" method="POST">
+    <nav class="navbar navbar-expand-lg"><a class="navbar-brand" href="#"></a><a class="navbar-brand" href="#"></a>
+      <a class="navbar-brand" href="#">Pastry Shop</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"> <li class="nav-item">
+            <form action="/main/shop/" method="POST">
+              <a class="nav-link" href="/main/shop/">Shop</a>
+            </form>
+          </li>
+            <form action="/main/pastry/" method="POST">
+              <a class="nav-link" href="/main/pastry/">Home</a>
+            </form>
+          </li>
+         
+         
+          <li class="nav-item">
+            <form action="/main/about/" method="POST">
+              <a class="nav-link" href="/main/about/">About</a>
+            </form>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <form action="/main/login/" method="POST">
+                    <a class="dropdown-item" href="/main/login/">Login</a>
+                </form>
+                <form action="/main/register/" method="POST">
+                    <a class="dropdown-item" href="/main/register/">Register</a>
+                </form>
+            </div>
+        </li>
+        <li class="nav-item">
+          <form action="/main/addtocart/" method="POST">
+              <a class="nav-link" href="/main/addtocart/">Add to Cart</a>
+          </form>
+      </li>
+          <li class="nav-item">
+            <form>
+               <a class="nav-link" href=''></a>
+             </form>
+           </li>
+           <li class="nav-item">
+             <form>
+                <a class="nav-link" href=''></a>
+              </form>
+            </li>
+            <li class="nav-item">
+             <form>
+                <a class="nav-link" href=''></a>
+              </form>
+            </li>
+        </ul>
+      </div>
+    </nav>
+<br><br>{% if cart %}
+    <div class="container">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th><h3>Product Details</h3></th>
+            <th><h3>Price Details</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="product-column">
+              {% if cart %}
+              {% for item in cart %}
+              <div class="product">
+                <div class="image-container">
+                  <img src="{{ item.image }}" alt="{{ item.description }}">
+                </div>
+                <div class="description">
+                  <h2>{{ item.description }}</h2>
+                  <p>Price: ${{ item.price }}</p>
+                  <div class="quantity">
+                    <button class="quantity-btn minus">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" data-price="{{ item.price }}">
+                    <button class="quantity-btn plus">+</button>
+                  </div>
+                  <p class="total-price">Total Product Price: ${{ item.price }}</p>
+                  <form action="{% url 'removefromcart' %}" method="post" class="remove-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="remove">
+                    <input type="hidden" name="image" value="{{ item.image }}">
+                    <button class="place-order-btn" type="submit">Remove</button>
+                  </form>
+                </div>
+              </div>
+              {% endfor %}
+             
+                <a class="nav-link" href='/main/place_order/'> <button class="place-order-btn1">Placeorder</button></a>
+         
+              {% else %}
+              <p>Your cart is empty.</p>
+              {% endif %}
+            </td>
+            <td class="cart-summary-column" colspan="5">
+              <div class="container"  colspan="5">
+                <table class="cart-table">
+                  <tbody>
+                    <tr>
+                      <td class="cart-summary-column" colspan="5">
+                        <div class="cart-summary text-center" colspan="5">
+                          <p>________________________________________</p>
+                          <p class="cart-total-sum">Price:<br> <br>  $0.00</p><br>
+                          <p class="delivery-charges">Delivery Charges:   <br> <br> $0.00</p><br>
+                          <p>________________________________________</p>
+                          <p class="final-total-price">Total Amount:<br> <br>  $0.00</p><br>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </td>
+            
+                  </tbody>
+                </table>
+              </div>
+              
+              <table class="table2">
+      
+                <tr>
+                  <th></th>
+                  
+                  <th>OUR STORE
+                  </th>
+                <th>OPENING HOURS</th>
+                <th>STAY CONNECTED</th>
+                </tr>
+                <tr>
+                  <th>________________________<br><h2>Pastry Shop</h2>_________________________</th>
+                  <td>00,patelfaliyu varod<br>jhalod,Dis-Dahod<br>Gujarat</td>
+                  <td>Closed Mondays<br>
+                    Tue - Thurs: 9am - 5pm<br>
+                    Fri - Sun: 9am - 8pm<br>
+                    </td>
+                    <td>
+                      <img src="https://stpaulsbanswara.com/Images/SiteImage/facebook-circle.png" class="social-icon">
+                      <img src="https://stpaulsbanswara.com/Images/SiteImage/instagram.png" class="social-icon">
+                      <img src="https://stpaulsbanswara.com/Images/SiteImage/twitter.png" class="social-icon">
+                    </td>
+                    
+                </tr>
+                <tr>
+                  <th></th>
+                  <td>Ph_no-7976322569<br>Email id-<br>pateldhruv2723@gmail.com</td>
+                <th></th>
+                </tr>
+               
+              
+            </table>
+            {% else %}
+       <center>     <h1>Your cart is empty.</h1></center>
+            {% endif %}
+        <br>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
+   <script>
+    $(document).ready(function() {
+      $('.quantity-btn').click(function() {
+        var $quantityInput = $(this).siblings('.quantity-input');
+        var currentQuantity = parseInt($quantityInput.val());
+        var price = parseInt($quantityInput.data('price'));
+        var total = currentQuantity * price;
+    
+        if ($(this).hasClass('minus')) {
+          if (currentQuantity > 1) {
+            $quantityInput.val(currentQuantity - 1);
+            $quantityInput.trigger('change');
+          }
+        } else if ($(this).hasClass('plus')) {
+          $quantityInput.val(currentQuantity + 1);
+          $quantityInput.trigger('change');
+        }
+      });
+    
+      $('.quantity-input').change(function() {
+        var $quantityInput = $(this);
+        var currentQuantity = parseInt($quantityInput.val());
+        var price = parseInt($quantityInput.data('price'));
+        var total = currentQuantity * price;
+    
+        $quantityInput.closest('.description').find('.total-price').text('Total Price: $' + total);
+      });
+    });
+
+
+
+
+    $(document).ready(function() {
+  function calculateTotalSum() {
+    var totalSum = 0;
+    $('.product').each(function() {
+      var quantity = parseInt($(this).find('.quantity-input').val());
+      var price = parseInt($(this).find('.quantity-input').data('price'));
+      var productTotal = quantity * price;
+      totalSum += productTotal;
+    });
+    $('.cart-total-sum').text('Total Sum: $' + totalSum.toFixed(2));
+  }
+
+  $('.quantity-input').change(function() {
+    var $quantityInput = $(this);
+    var currentQuantity = parseInt($quantityInput.val());
+    var price = parseInt($quantityInput.data('price'));
+    var total = currentQuantity * price;
+    $quantityInput.closest('.description').find('.total-price').text('Total Price: $' + total.toFixed(2));
+    calculateTotalSum();
+  });
+
+  calculateTotalSum();
+});
+
+
+
+$(document).ready(function() {
+  function calculateTotalSum() {
+    var totalSum = 0;
+    $('.product').each(function() {
+      var quantity = parseInt($(this).find('.quantity-input').val());
+      var price = parseInt($(this).find('.quantity-input').data('price'));
+      var productTotal = quantity * price;
+      totalSum += productTotal;
+    });
+    $('.cart-total-sum').text('Total Sum: $' + totalSum.toFixed(2));
+
+    var deliveryCharges = totalSum >= 600 ? 0 : 70;
+    $('.delivery-charges').text('Delivery Charges: $' + deliveryCharges.toFixed(2));
+
+    var finalTotalPrice = totalSum + deliveryCharges;
+    $('.final-total-price').text('Final Total Price: $' + finalTotalPrice.toFixed(2));
+  }
+
+  $('.quantity-input').change(function() {
+    var $quantityInput = $(this);
+    var currentQuantity = parseInt($quantityInput.val());
+    var price = parseInt($quantityInput.data('price'));
+    var total = currentQuantity * price;
+    $quantityInput.closest('.description').find('.total-price').text('Total Price: $' + total.toFixed(2));
+    calculateTotalSum();
+  });
+
+  calculateTotalSum();
+});
+
+
+
+
+$(document).ready(function() {
+  function calculateTotalSum() {
+    var totalSum = 0;
+    $('.product').each(function() {
+      var quantity = parseInt($(this).find('.quantity-input').val());
+      var price = parseInt($(this).find('.quantity-input').data('price'));
+      var productTotal = quantity * price;
+      totalSum += productTotal;
+    });
+    $('.cart-total-sum').text('Total Sum: $' + totalSum.toFixed(2));
+
+    var deliveryCharges = totalSum >= 600 ? 0 : 70;
+    $('.delivery-charges').text('Delivery Charges: $' + deliveryCharges.toFixed(2));
+
+    var finalTotalPrice = totalSum + deliveryCharges;
+    $('.final-total-price').text('Final Total Price: $' + finalTotalPrice.toFixed(2));
+
+    // Hide or show the Cart Summary section based on the presence of products in the cart
+    if (totalSum > 0) {
+      $('.cart-summary').show();
+    } else {
+      $('.cart-summary').hide();
+    }
+  }
+
+  $('.quantity-input').change(function() {
+    var $quantityInput = $(this);
+    var currentQuantity = parseInt($quantityInput.val());
+    var price = parseInt($quantityInput.data('price'));
+    var total = currentQuantity * price;
+    $quantityInput.closest('.description').find('.total-price').text('Total Price: $' + total.toFixed(2));
+    calculateTotalSum();
+  });
+
+  calculateTotalSum();
+});
+
+  </script>    
+    
+    
+  </form>
+</body>
+</html>

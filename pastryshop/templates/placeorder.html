@@ -1,0 +1,230 @@
+{% load static %}
+<html>
+<head>
+    
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Shopping Cart</title>
+  <style>
+       /* Custom CSS styles */
+  
+
+        .navbar {
+            background-color: #ffede0;
+        }
+
+        .navbar-brand {
+            color: rgb(63, 57, 145);
+            font-size: x-large;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgb(63, 57, 145);
+            font-size: large;
+        }
+
+        .one {
+            background-color: #ffede0;
+        }
+
+       
+ h1 {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+
+
+
+   h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+     p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+
+
+     button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    
+
+    button:hover {
+      background-color: #0056b3;
+    }    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      width: 800px;
+      text-align: left;
+      background-color: #fff;
+    }
+
+ 
+
+
+
+.click {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+       
+
+        .click {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .click:hover {
+            background-color:#0056b3;
+        }
+ 
+  
+/* Add styles for the lock icon or lock image here */
+
+    </style>
+</head>
+<body class="one">
+<form action="/main/pastry/" method="POST">
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#"></a><a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#">Pastry Shop</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"> 
+                <form action="/main/shop/" method="POST">
+                    <a class="nav-link" href="/main/shop/">Shop</a>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form action="/main/pastry/" method="POST">
+                   <a class="nav-link" href="/main/pastry/">Home</a>
+                </form>
+            </li>
+
+           
+            <li class="nav-item">
+              <form action="/main/about/" method="POST">
+                <a class="nav-link" href="/main/about/">About</a>
+              </form>
+            </li>
+           
+            <li class="nav-item">
+              <form action="/main/addtocart/" method="POST">
+                  <a class="nav-link" href="/main/addtocart/">Add to Cart</a>
+              </form>
+          </li>
+            <li class="nav-item">
+                <form>
+                    <a class="nav-link" href=''></a>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form>
+                    <a class="nav-link" href=''></a>
+                </form>
+            </li>
+            <li class="nav-item">
+                <form>
+                    <a class="nav-link" href=''></a>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+{% if user_data %}
+
+ 
+    <h2>Login</h2>
+     <p> {{ user_data.7 }}</p><a class="nav-link" href='/main/login/'>Change</a>
+   
+
+  
+    <h2>Delivery Address</h2>
+  
+    <p>Name:{{ user_data.1 }}</p> <a class="nav-link" href='/main/update_profile/'>Change</a>
+    <p>Address:{{ user_data.3 }},{{ user_data.4 }}</p>
+    <p>Landmark:{{ user_data.5 }},{{ user_data.6 }}</p>
+    
+    <p>Contact:{{ user_data.2 }},{{ user_data.7 }}</p>
+   
+
+   
+    <h2>Cart Items:</h2>
+
+    {% for item in cart %}
+        <img src="{{ item.image }}" alt="{{ item.description }}" style="width: 100px; height: 100px;">
+        <p>Description: {{ item.description }}</p>
+        <p>Price: {{ item.price }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+    {% endfor %}
+    
+    <h2>____________________________________</h2>  
+    
+    <!-- Display total quantity and total price -->
+    <p>Total Quantity: {{ total_quantity }}</p>
+    <p>Total Price: {{ total_price }}</p>
+    
+
+  <a href='/main/payment/'><button class="click">craditcard</button>
+    {% else %}
+
+
+
+
+
+
+
+
+
+
+
+<br><center><h2>For check please login</h2></center>
+<center><a href="/main/login/"><button class="click">Login</button></a></center>
+{% endif %}
+ 
+           
+ 
+
+    
+   
+<script>// Function to show/hide elements by their IDs
+  </script>
+
+   
+ 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
